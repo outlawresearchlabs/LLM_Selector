@@ -1,6 +1,19 @@
-## Working case 
-##Your LLM chooses the best LLM for your Specific Query
-# Autoselect the best LLM for your specific Query | Ollama Implementation
+## Auto Select LLM
+## This will select the best model for the task presented by the user
+## 
+## ________          __  .__                  __________                                          .__      .____          ___.           
+## \_____  \  __ ___/  |_|  | _____ __  _  __ \______   \ ____   ______ ____ _____ _______   ____ |  |__   |    |   _____ \_ |__   ______
+##  /   |   \|  |  \   __\  | \__  \\ \/ \/ /  |       _// __ \ /  ___// __ \\__  \\_  __ \_/ ___\|  |  \  |    |   \__  \ | __ \ /  ___/
+## /    |    \  |  /|  | |  |__/ __ \\     /   |    |   \  ___/ \___ \\  ___/ / __ \|  | \/\  \___|   Y  \ |    |___ / __ \| \_\ \\___ \ 
+## \_______  /____/ |__| |____(____  /\/\_/    |____|_  /\___  >____  >\___  >____  /__|    \___  >___|  / |_______ (____  /___  /____  >
+##         \/                      \/                 \/     \/     \/     \/     \/            \/     \/          \/    \/    \/     \/ 
+## Version 2
+## Based on https://github.com/PromptEngineer48/LLM_Selector
+##
+## By PromptEngineer48
+##
+##
+##
 
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
