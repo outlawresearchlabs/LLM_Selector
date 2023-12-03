@@ -23,6 +23,7 @@ Step 4: The chosen LLM runs giving the output
 main.py +> Basic Implementation of Langchain for Ollama
 
 main_working.py +> Gives your Terminal Experience (This is the full code your can run on your terminal using "python main_working.py")
+    This is where we have primarily developed.  Currently it is a dynamic list of models, next steps is exception handling if the model is not already pulled, it will pull the model.
 
 main_stream.py +> Give a Web UI experience using Streamlit (To run this code, type "streamlit run main_stream.py" on your terminal)
 
@@ -37,3 +38,12 @@ requirements.txt +> Run these requirements before running any codes above ("pip 
 https://youtu.be/lhQ8ixnYO2Y
 https://youtu.be/ridRXgAmqoQ
 https://youtu.be/oguOlJz7RIY
+
+
+
+# To Do (may change)
+
+1. Pull Model if not present
+2. Autogen
+3. MemGPT
+4. More to come
