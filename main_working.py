@@ -1,9 +1,46 @@
-## Working case ##Your LLM chooses the best LLM for your Specific Query
+## Working case 
+##Your LLM chooses the best LLM for your Specific Query
 # Autoselect the best LLM for your specific Query | Ollama Implementation
 
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.llms import Ollama
+import requests
+from bs4 import BeautifulSoup
+from concurrent.futures import ThreadPoolExecutor
+
+def fetch_content(url):
+    """
+    Fetch content from a single URL.
+    """
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        return response.text
+    except requests.RequestException as e:
+        print(f"Error fetching {url}: {e}")
+        return None
+
+def get_available_models():
+    url = 'https://ollama.ai/library'
+    models_dict = {}
+
+    content = fetch_content(url)
+    if content:
+        soup = BeautifulSoup(content, 'lxml')
+        model_names = soup.find_all('h2', class_='mb-3 truncate text-lg font-medium underline-offset-2 group-hover:underline md:text-2xl')
+        model_descriptions = soup.find_all('p', class_='mb-4 max-w-md')
+
+        for name, desc in zip(model_names, model_descriptions):
+            model_key = name.get_text(strip=True).lower().replace(' ', '-')
+            model_value = desc.get_text(strip=True)
+            models_dict[model_key] = model_value
+
+    return models_dict
+
+
+models_dict = get_available_models()
+
 
 def select_best_model(user_input, models_dict):
     llm = Ollama(model="neural-chat") #Selector Model
@@ -41,17 +78,6 @@ def parse_llm_response(response, models_dict):
 
     return best_model
 
-
-models_dict = {
-    'neural-chat': 'A fine-tuned model based on Mistral with good coverage of domain and language.',
-    'mistral': 'The popular model which is able to generate coherent text and perform various natural language processing tasks.',
-    'codellama': 'A model that can use generate and discuss code and programme in python, c++, javacript and all the programming languages.',
-    'llama2-uncensored': 'Uncensored Llama 2 model. This model can give NSFW replies and can be used to generate anything which the other models are shy about. Questions on hacking, immorality, sexual and all bad contents can be asked to this model',
-    'orca-mini': 'A general-purpose model ranging from 3 billion parameters to 70 billion, suitable for entry-level hardware.',
-    'llama2-chinese': 'Llama 2 based model fine tuned to improve Chinese dialogue ability.',
-    'dolphin2.2-mistral': 'An instruct-tuned model based on Mistral. Version 2.2 is fine-tuned for improved conversation and empathy.',
-}
-## Updated Text to read a little differently and to provide the answer for how to quit.
 while True:
     user_input = input("\nEnter the task you need assistance with or type /exit to quit  => ")
 
