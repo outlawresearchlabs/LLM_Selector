@@ -1,5 +1,7 @@
 langchain
 requests
 streamlit
+lxml
+bs4
 #conda name newopenai
 #pip install -r requirements.txt
