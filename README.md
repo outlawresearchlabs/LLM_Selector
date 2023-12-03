@@ -20,14 +20,13 @@ Step 4: The chosen LLM runs giving the output
 
 # CODE EXPLANATION
 
-main.py +> Basic Implementation of Langchain for Ollama
+main.py +> Basic Implementation of Langchain for Ollama (No changes)
 
-main_working.py +> Gives your Terminal Experience (This is the full code your can run on your terminal using "python main_working.py")
-    This is where we have primarily developed.  Currently it is a dynamic list of models, next steps is exception handling if the model is not already pulled, it will pull the model.
+main_working.py +> Gives your Terminal Experience (This is the full code your can run on your terminal using "python main_working.py") (Major changes)
+    
+main_stream.py +> Give a Web UI experience using Streamlit (To run this code, type "streamlit run main_stream.py" on your terminal) (No changes)
 
-main_stream.py +> Give a Web UI experience using Streamlit (To run this code, type "streamlit run main_stream.py" on your terminal)
-
-requirements.txt +> Run these requirements before running any codes above ("pip install -r requirements.txt" on your terminal)
+requirements.txt +> Run these requirements before running any codes above ("pip install -r requirements.txt" on your terminal) (Updated for new requirements based on main_working.py)
 
 
 # REQUIREMENTS:
