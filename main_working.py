@@ -51,9 +51,9 @@ models_dict = {
     'llama2-chinese': 'Llama 2 based model fine tuned to improve Chinese dialogue ability.',
     'dolphin2.2-mistral': 'An instruct-tuned model based on Mistral. Version 2.2 is fine-tuned for improved conversation and empathy.',
 }
-
+## Updated Text to read a little differently and to provide the answer for how to quit.
 while True:
-    user_input = input("\nType your question? => ")
+    user_input = input("\nEnter the task you need assistance with or type /exit to quit  => ")
 
     if user_input.strip().lower() == "/exit":
         print("Exiting the program.")
